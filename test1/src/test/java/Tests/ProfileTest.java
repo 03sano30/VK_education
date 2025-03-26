@@ -17,7 +17,7 @@ class ProfileTest  {
 
         open("https://ok.ru");
 
-        new LoginPage().login("89627470281", "89618219626s");
+        new LoginPage().login("Логин", "Пароль");
         new MainPage().openProfile();
 
         ProfilePage profilePage = new ProfilePage();

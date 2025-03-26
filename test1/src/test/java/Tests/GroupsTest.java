@@ -18,7 +18,7 @@ class GroupsTest {
     void checkGroupsPage() throws InterruptedException {
         open("https://ok.ru");
 
-        new LoginPage().login("89627470281", "89618219626s");
+        new LoginPage().login("Логин", "Пароль");
         new MainPage().openGroups();
 
         GroupsPage groupsPage = new GroupsPage();

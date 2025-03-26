@@ -15,7 +15,7 @@ public class FriendsOnSiteTest {
     void checkPossibleFriendsPage() throws InterruptedException {
         open("https://ok.ru");
 
-        new LoginPage().login("89627470281", "89618219626s");
+        new LoginPage().login("Логин", "Пароль");
 
         MainPage mainPage = new MainPage();
         mainPage.visibleFriendsOnSite();

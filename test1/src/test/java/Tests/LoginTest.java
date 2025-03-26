@@ -17,7 +17,7 @@ public class LoginTest {
     void testSuccessfulLogin() {
         open("https://ok.ru");
         LoginPage loginPage = new LoginPage();
-        loginPage.login("89627470281", "89618219626s");
+        loginPage.login("Логин", "Пароль");
         MainPage mainPage = new MainPage();
         mainPage.verifyProfileLinkVisible();
 
