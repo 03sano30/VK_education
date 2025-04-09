@@ -1,25 +1,18 @@
 package Tests;
 
 
-import Pages.LoginPage;
+import Base.BaseTest;
 import Pages.MainPage;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-import static java.lang.Thread.sleep;
 
-public class FriendsOnSiteTest {
+
+public class FriendsOnSiteTest extends BaseTest  {
     @Test
-    void checkPossibleFriendsPage() throws InterruptedException {
-        open("https://ok.ru");
-
-        new LoginPage().login("Логин", "Пароль");
-
+    @DisplayName("Проверка отображения друзей на сайте")
+    void checkPossibleFriendsPage(){
         MainPage mainPage = new MainPage();
         mainPage.visibleFriendsOnSite();
-        sleep(1000);
-
     }
 }

@@ -1,28 +1,19 @@
 package Tests;
 
-
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import Base.BaseTest;
 import Pages.GroupsPage;
 import Pages.LoginPage;
 import Pages.MainPage;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-import static java.lang.Thread.sleep;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-class GroupsTest {
+public class GroupsTest extends BaseTest {
 
     @Test
-    void checkGroupsPage() throws InterruptedException {
-        open("https://ok.ru");
-
-        new LoginPage().login("Логин", "Пароль");
-        new MainPage().openGroups();
-
-        GroupsPage groupsPage = new GroupsPage();
+    @DisplayName("Проверка отображения рекомендуемых групп")
+    void checkGroupsPage() {
+        MainPage mainPage = new MainPage();
+        GroupsPage groupsPage = mainPage.openGroups();
         groupsPage.hasRecommendedGroups();
-        sleep(5000);
     }
 }

@@ -1,29 +1,34 @@
 package Pages;
 
-import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class MainPage {
-    private final SelenideElement profileLink = $x("//*[@id='hook_Block_Navigation']/div/div/div[1]/a/div");
+    private static final Logger logger = LoggerFactory.getLogger(MainPage.class);
+    private static final By PROFILE_LINK = By.xpath("//div[@class='tico ellip']");
+    private static final By GROUPS_LINK = By.xpath("//div[contains(text(), 'Группы')]");
 
-    private final SelenideElement groupsLink = $x("//*[@id='hook_Block_Navigation']/div/div/div[6]/a/div");
-
-    private final SelenideElement friendsOnSite = $x("//*[@id='online-fr_block']/div[2]/h3");
-
-
-
-    public void openProfile() {
-        profileLink.shouldBe(visible).click();
+    private static final By FRIENDS_ON_SITE = By.xpath("//h3[contains(text(), 'Друзья на сайте')]");
+    public ProfilePage openProfile() {
+        logger.info("Нажимаем на кнопку профиля ");
+        $(PROFILE_LINK).click();
+        return new ProfilePage();
     }
-    public void verifyProfileLinkVisible() {
-        profileLink.shouldBe(visible);
+
+    public GroupsPage openGroups() {
+        logger.info("Нажимаем на кнопку с названием: " + $(GROUPS_LINK).getText());
+        $(GROUPS_LINK).click();
+        return new GroupsPage();
     }
-    public void openGroups() {
-        groupsLink.shouldBe(visible).click();
+    public void visibleProfile(){
+        $(PROFILE_LINK).shouldBe(visible.because("Профиль не виден"));
     }
-    public void visibleFriendsOnSite() {
-        friendsOnSite.shouldBe(visible);
+    public void visibleFriendsOnSite(){
+        $(FRIENDS_ON_SITE).shouldBe(visible.because("Друзья на сайте не видны"));
     }
 }

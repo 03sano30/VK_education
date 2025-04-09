@@ -1,25 +1,38 @@
 package Tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import Pages.LoginPage;
 import Pages.MainPage;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 public class LoginTest {
+    @AfterEach
+    void CloseWebDriver() {
+        closeWebDriver();
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "technopol51, technopolisPassword, false",
+            "wrong@mail.ru, valid123, true"
+    })
 
-
-    @Test
-    void testSuccessfulLogin() {
+    @DisplayName("Проверка входа в систему ")
+    void testSuccessfulLogin(String email, String password, boolean isErrorExpected) {
         open("https://ok.ru");
         LoginPage loginPage = new LoginPage();
-        loginPage.login("Логин", "Пароль");
-        MainPage mainPage = new MainPage();
-        mainPage.verifyProfileLinkVisible();
+        loginPage.login(email, password);
 
+        if (isErrorExpected) {
+            // Проверка, что ошибка появляется
+            assert loginPage.error() : "Ошибка входа не отображена!";
+        } else {
+            MainPage mainPage = new MainPage();
+            mainPage.visibleProfile();
+
+        }
     }
 }

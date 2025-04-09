@@ -1,12 +1,12 @@
 package Pages;
 
-import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.*;
+import org.openqa.selenium.By;
+import static com.codeborne.selenide.Selenide.$;
 
 public class ProfilePage {
-    private final SelenideElement userName = $x("//*[@id='hook_Block_UserProfileInfo']/div/a/h1");
+    private static final By USER_NAME = By.xpath("//h1[contains(@class, 'user-profile-name')]");
 
     public String getUserName() {
-        return userName.getText();
+        return $(USER_NAME).getText();
     }
 }

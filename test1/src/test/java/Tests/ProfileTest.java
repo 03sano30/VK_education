@@ -1,29 +1,21 @@
 package Tests;
 
-
-import org.junit.jupiter.api.Test;
+import Base.BaseTest;
 import Pages.LoginPage;
 import Pages.MainPage;
 import Pages.ProfilePage;
-
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.open;
-import static java.lang.Thread.sleep;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class ProfileTest  {
+public class ProfileTest extends BaseTest {
+
     @Test
-    void checkProfileInfo() throws InterruptedException {
-
-        open("https://ok.ru");
-
-        new LoginPage().login("Логин", "Пароль");
-        new MainPage().openProfile();
-
-        ProfilePage profilePage = new ProfilePage();
+    @DisplayName("Проверка отображения имени пользователя в профиле")
+    void checkProfileInfo() {
+        MainPage mainPage = new MainPage();
+        ProfilePage profilePage = mainPage.openProfile();
         String name = profilePage.getUserName();
-        sleep(3000);
         assertFalse(name.isEmpty(), "Имя пользователя не отображается");
-
     }
 }
