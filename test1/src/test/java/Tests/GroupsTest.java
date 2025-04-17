@@ -2,7 +2,6 @@ package Tests;
 
 import Base.BaseTest;
 import Pages.GroupsPage;
-import Pages.LoginPage;
 import Pages.MainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -2,29 +2,28 @@ package Tests;
 
 import Pages.LoginPage;
 import Pages.MainPage;
+import Pages.LoginCredentials;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+
 public class LoginTest {
     @AfterEach
     void CloseWebDriver() {
         closeWebDriver();
     }
-    @ParameterizedTest
-    @CsvSource({
-            "technopol51, technopolisPassword, false",
-            "wrong@mail.ru, valid123, true"
-    })
 
-    @DisplayName("Проверка входа в систему ")
-    void testSuccessfulLogin(String email, String password, boolean isErrorExpected) {
+    @ParameterizedTest
+    @MethodSource("Tests.TestDataProvider#loginCredentialsProvider")
+    @DisplayName("Проверка входа в систему")
+    void testSuccessfulLogin(LoginCredentials credentials, boolean isErrorExpected) {
         open("https://ok.ru");
         LoginPage loginPage = new LoginPage();
-        loginPage.login(email, password);
+        loginPage.login(credentials.getEmail(), credentials.getPassword());
 
         if (isErrorExpected) {
             // Проверка, что ошибка появляется
@@ -32,7 +31,6 @@ public class LoginTest {
         } else {
             MainPage mainPage = new MainPage();
             mainPage.visibleProfile();
-
         }
     }
 }

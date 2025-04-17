@@ -3,12 +3,14 @@ package Pages;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import Components.ToolbarWrapper;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 
 public class MainPage {
+    private static final By TOOLBAR_ROOT = By.xpath("//*[contains(@class, 'toolbar_nav')]");
+
     private static final Logger logger = LoggerFactory.getLogger(MainPage.class);
     private static final By PROFILE_LINK = By.xpath("//div[@class='tico ellip']");
     private static final By GROUPS_LINK = By.xpath("//div[contains(text(), 'Группы')]");
@@ -19,7 +21,9 @@ public class MainPage {
         $(PROFILE_LINK).click();
         return new ProfilePage();
     }
-
+    public ToolbarWrapper toolbar() {
+        return new ToolbarWrapper($(TOOLBAR_ROOT));
+    }
     public GroupsPage openGroups() {
         logger.info("Нажимаем на кнопку с названием: " + $(GROUPS_LINK).getText());
         $(GROUPS_LINK).click();
