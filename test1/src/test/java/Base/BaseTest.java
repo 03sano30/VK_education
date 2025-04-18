@@ -19,8 +19,6 @@ public abstract class BaseTest {
     @BeforeEach
     void setUp() {
         open("https://ok.ru");
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("technopol51", "technopolisPassword");
     }
 
     @AfterEach

@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.BaseLoginTest;
 import Base.BaseTest;
 import Pages.LoginPage;
 import Pages.MainPage;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class ProfileTest extends BaseTest {
+public class ProfileTest extends BaseLoginTest {
 
     @Test
     @DisplayName("Проверка отображения имени пользователя в профиле")

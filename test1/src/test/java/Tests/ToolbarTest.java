@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.BaseLoginTest;
 import Base.BaseTest;
 import Pages.MainPage;
 import Pages.MessagesPage;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 
 
-public class ToolbarTest extends BaseTest {
+public class ToolbarTest extends BaseLoginTest {
     @Test
     @DisplayName("Проверка работы в тулбаре кнопка Сообщения")
     void checkMessage (){

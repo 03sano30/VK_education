@@ -1,18 +1,24 @@
 package Tests;
 
 import Pages.LoginCredentials;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
 import java.util.stream.Stream;
 
 public class TestDataProvider {
-    @MethodSource
-    public static Stream<Arguments> loginCredentialsProvider() {
+    public static Stream<LoginCredentials> validLoginCredentials() {
         return Stream.of(
-                Arguments.of(new LoginCredentials("technopol51", "technopolisPassword"), false),
-                Arguments.of(new LoginCredentials("wrong@mail.ru", "valid123"), true)
+                new LoginCredentials("technopol51", "technopolisPassword")
+        );
+    }
+
+    public static Stream<LoginCredentials> invalidLoginCredentials() {
+        return Stream.of(
+                new LoginCredentials("technopol51", "wrongPass"),
+                new LoginCredentials("wrongUser", "technopolisPassword"),
+                new LoginCredentials("", "technopolisPassword"),
+                new LoginCredentials("technopol51", ""),
+                new LoginCredentials("", "")
         );
     }
 }
+
 

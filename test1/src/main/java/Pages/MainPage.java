@@ -9,13 +9,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class MainPage {
-    private static final By TOOLBAR_ROOT = By.xpath("//*[contains(@class, 'toolbar_nav')]");
+    private static final By TOOLBAR_ROOT = By.xpath(".//*[contains(@class, 'toolbar_nav')]");
 
     private static final Logger logger = LoggerFactory.getLogger(MainPage.class);
-    private static final By PROFILE_LINK = By.xpath("//div[@class='tico ellip']");
-    private static final By GROUPS_LINK = By.xpath("//div[contains(text(), 'Группы')]");
+    private static final By PROFILE_LINK = By.xpath(".//div[@class='tico ellip']");
+    private static final By GROUPS_LINK = By.xpath(".//div[contains(text(), 'Группы')]");
 
-    private static final By FRIENDS_ON_SITE = By.xpath("//h3[contains(text(), 'Друзья на сайте')]");
+    private static final By FRIENDS_ON_SITE = By.xpath(".//h3[contains(text(), 'Друзья на сайте')]");
     public ProfilePage openProfile() {
         logger.info("Нажимаем на кнопку профиля ");
         $(PROFILE_LINK).click();
@@ -26,7 +26,7 @@ public class MainPage {
     }
     public GroupsPage openGroups() {
         logger.info("Нажимаем на кнопку с названием: " + $(GROUPS_LINK).getText());
-        $(GROUPS_LINK).click();
+        $(GROUPS_LINK).shouldBe(visible).click();
         return new GroupsPage();
     }
     public void visibleProfile(){
