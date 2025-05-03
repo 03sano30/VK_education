@@ -1,6 +1,5 @@
-package Tests;
+package providers;
 
-import Pages.LoginCredentials;
 import java.util.stream.Stream;
 
 public class TestDataProvider {

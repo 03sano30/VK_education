@@ -1,7 +1,6 @@
 package Tests;
 
 import Base.BaseLoginTest;
-import Base.BaseTest;
 import Pages.MainPage;
 import Pages.MessagesPage;
 import Pages.VideoPage;

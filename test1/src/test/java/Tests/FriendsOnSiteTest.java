@@ -2,7 +2,6 @@ package Tests;
 
 
 import Base.BaseLoginTest;
-import Base.BaseTest;
 import Pages.MainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,5 @@
 package Base;
 
-import Pages.LoginPage;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;

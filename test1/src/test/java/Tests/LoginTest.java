@@ -3,7 +3,7 @@ package Tests;
 import Base.BaseTest;
 import Pages.LoginPage;
 import Pages.MainPage;
-import Pages.LoginCredentials;
+import providers.LoginCredentials;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
