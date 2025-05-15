@@ -1,5 +1,7 @@
 package Components;
 
+import Pages.MessagesPage;
+import Pages.VideoPage;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
@@ -24,38 +26,40 @@ public class ToolbarWrapper {
         this.toolbarRoot = toolbarRoot;
     }
 
-    public void clickMessages() {
+    public MessagesPage clickMessages() {
         logger.info("Кликаем по кнопке 'Сообщения'");
-        toolbarRoot.$(MESSAGES_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(MESSAGES_BUTTON).shouldBe(visible.because("Кнопка 'Сообщения' не видна")).click();
+        return new MessagesPage();
     }
 
     public void clickDiscussions() {
         logger.info("Кликаем по кнопке 'Обсуждения'");
-        toolbarRoot.$(DISCUSSIONS_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(DISCUSSIONS_BUTTON).shouldBe(visible.because("Кнопка 'Обсуждения' не видна")).click();
     }
 
     public void clickNotifications() {
         logger.info("Кликаем по кнопке 'Оповещения'");
-        toolbarRoot.$(NOTIFICATIONS_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(NOTIFICATIONS_BUTTON).shouldBe(visible.because("Кнопка 'Оповещения' не видна")).click();
     }
 
     public void clickGuests() {
         logger.info("Кликаем по кнопке 'Гости'");
-        toolbarRoot.$(GUESTS_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(GUESTS_BUTTON).shouldBe(visible.because("Кнопка 'Гости' не видна")).click();
     }
 
     public void clickEvents() {
         logger.info("Кликаем по кнопке 'События'");
-        toolbarRoot.$(EVENTS_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(EVENTS_BUTTON).shouldBe(visible.because("Кнопка 'События' не видна")).click();
     }
 
-    public void clickVideo() {
+    public VideoPage clickVideo() {
         logger.info("Кликаем по кнопке 'Видео'");
-        toolbarRoot.$(VIDEO_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(VIDEO_BUTTON).shouldBe(visible.because("Кнопка 'Видео' не видна")).click();
+        return  new VideoPage();
     }
 
     public void clickMusic() {
         logger.info("Кликаем по кнопке 'Музыка'");
-        toolbarRoot.$(MUSIC_BUTTON).shouldBe(visible).click();
+        toolbarRoot.$(MUSIC_BUTTON).shouldBe(visible.because("Кнопка 'Музыка' не видна")).click();
     }
 }

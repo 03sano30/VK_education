@@ -12,9 +12,7 @@ public class ProfileTest extends BaseLoginTest {
     @Test
     @DisplayName("Проверка отображения имени пользователя в профиле")
     void checkProfileInfo() {
-        MainPage mainPage = new MainPage();
-        ProfilePage profilePage = mainPage.openProfile();
-        String name = profilePage.getUserName();
+        String name = new MainPage().openProfile().getUserName();
         assertFalse(name.isEmpty(), "Имя пользователя не отображается");
     }
 }

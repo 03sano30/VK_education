@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("Tests.TestDataProvider#validLoginCredentials")
+    @MethodSource("providers.TestDataProvider#validLoginCredentials")
     @DisplayName("Позитивный сценарий: успешный вход")
     void testSuccessfulLogin(LoginCredentials credentials) {
         LoginPage loginPage = new LoginPage();
@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
         mainPage.visibleProfile();
     }
     @ParameterizedTest
-    @MethodSource("Tests.TestDataProvider#invalidLoginCredentials")
+    @MethodSource("providers.TestDataProvider#invalidLoginCredentials")
     @DisplayName("Негативный сценарий: вход с ошибкой")
     void testUnsuccessfulLogin(LoginCredentials credentials) {
         LoginPage loginPage = new LoginPage();
